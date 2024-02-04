@@ -1,0 +1,15 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/HomePage",
+    "pages/Mine/MinePage",
+    "pages/Mine/LoginPage",
+    "pages/Tram/TramPage",
+    "pages/Zixun/ZixunPage",
+    "pages/Wallpaper/WallpaperPage",
+    "pages/Wallpaper/WallpaperDetailPage",
+    "pages/Mine/settingPage",
+    "pages/Notice/NoticePage",
+    "pages/ActivePage"
+  ]
+}
