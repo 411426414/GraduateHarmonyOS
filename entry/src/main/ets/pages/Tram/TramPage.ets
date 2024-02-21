@@ -21,13 +21,7 @@ export default struct TramPage {
   @State latitude: number = 30.5023042637072754 // 维度
 
   aboutToAppear() {
-    this.isLoading = true
-    setTimeout(() => this.ChangeFun(), 500)
-
-  }
-
-  onPageShow() {
-    this.isLoading = true
+    console.log(`${flagTag} aboutToAppear`)
     setTimeout(() => this.ChangeFun(), 500)
   }
 
@@ -54,9 +48,11 @@ export default struct TramPage {
       }
     }
     .height('100%')
+    .width('100%')
   }
 
   ChangeFun() {
+    this.isLoading = true
     this.lineInfoList = []
     let index = this.currentIndex
 
