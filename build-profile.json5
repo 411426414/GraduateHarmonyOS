@@ -5,13 +5,13 @@
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "certpath": "C:\\Users\\ASUS\\.ohos\\config\\auto_debug_MyApplication2024_1_29_com.zhengjie.appfirst_300086000021346761.cer",
-          "storePassword": "0000001BD50119EB8C2B2296F56149007775B610C9ECD453A17D3EF99E536249D612CB4655035F59A56727",
+          "certpath": "C:\\Users\\郑杰\\.ohos\\config\\auto_debug_GraduateHarmonyOS_com.zhengjie.appfirst_300086000021346761.cer",
+          "storePassword": "0000001A5D0ED3676D1951F41FCC58CFC3E09F57F767C09525D0AA2B2753A8BC7BF9773FFC6EA9FCC15A",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001BCF0C0C1BDCB7EE80E7678B1CBB39D53AD82E839857475A9E6EB1C926C353F9B6DA82A31D7C54DF",
-          "profile": "C:\\Users\\ASUS\\.ohos\\config\\auto_debug_MyApplication2024_1_29_com.zhengjie.appfirst_300086000021346761.p7b",
+          "keyPassword": "0000001A9272606C4D7A5A7DDC9573A61A729EC8ABFC47BB5A27F5F0DBF5043780AD289881F062A4A6F5",
+          "profile": "C:\\Users\\郑杰\\.ohos\\config\\auto_debug_GraduateHarmonyOS_com.zhengjie.appfirst_300086000021346761.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "C:\\Users\\ASUS\\.ohos\\config\\auto_debug_MyApplication2024_1_29_com.zhengjie.appfirst_300086000021346761.p12"
+          "storeFile": "C:\\Users\\郑杰\\.ohos\\config\\auto_debug_GraduateHarmonyOS_com.zhengjie.appfirst_300086000021346761.p12"
         }
       }
     ],
