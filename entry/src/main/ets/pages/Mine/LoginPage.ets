@@ -17,6 +17,7 @@ struct LoginPage {
   @State password: string = '123456'
   @State verifyCode: string = ''
   @State userinfo: UserInfoModel = {}
+  @State isDisable: boolean = false
   chang = (val: string) => {
   }
   // 发送验证码
@@ -25,12 +26,30 @@ struct LoginPage {
   }
 
   doLogin() {
+    if (this.account == '' || this.password == '') {
+      promptAction.showToast({
+        message: '账号或密码不能为空',
+        duration: 3000,
+      })
+      return
+    }
+    console.log('登录');
     userLogin({ account: this.account, password: this.password })
       .then(res => {
         this.userinfo = res.data.userinfo
         let token = this.userinfo.token
         AppStorage.SetOrCreate('token', token)
         setTimeout(() => router.pushUrl({ url: 'pages/Mine/MinePage' }), 2000)
+      })
+      .catch(err => {
+        console.log('err: ', JSON.stringify(err))
+        promptAction.showToast({
+          message: '账号或密码错误',
+          duration: 3000
+        })
+      })
+      .finally(() => {
+        this.isDisable = false
       })
   }
 
@@ -48,6 +67,8 @@ struct LoginPage {
 
   register() {
     // 通过code + 密码 + 邮箱 登录
+    console.log('register')
+    this.isRegister = false
   }
 
   build() {
@@ -131,7 +152,11 @@ struct LoginPage {
         .borderRadius(50)
         .margin({ top: 100 })
         .onClick(() => {
-          this.isRegister ? this.register() : this.doLogin()
+          console.log('this.isRegister', JSON.stringify(this.isRegister))
+          if (!this.isDisable) {
+            this.isDisable = true
+            this.isRegister ? this.register() : this.doLogin()
+          }
         })
 
         Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
