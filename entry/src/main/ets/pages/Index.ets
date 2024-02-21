@@ -21,22 +21,26 @@ struct Index {
       index: this.currentIndex
     }) {
       TabContent() {
+        if (this.currentIndex === CommonConstants.HOME_TAB_INDEX)
         HomePage()
       }
       .tabBar(this.TabBuilder(CommonConstants.HOME_TITLE, CommonConstants.HOME_TAB_INDEX, $r('app.media.ic_home_selected'), $r('app.media.ic_home_normal')))
 
       TabContent() {
-        TramPage()
+        if (this.currentIndex === CommonConstants.TRAM_TAB_INDEX)
+          TramPage()
       }
       .tabBar(this.TabBuilder(CommonConstants.TRAM_TITLE, CommonConstants.TRAM_TAB_INDEX, $r('app.media.ic_tram_selected'), $r('app.media.ic_tram_normal')))
 
       TabContent() {
-        ZixunPage()
+        if (this.currentIndex === CommonConstants.ZIXUN_TAB_INDEX)
+          ZixunPage()
       }
       .tabBar(this.TabBuilder(CommonConstants.ZIXUN_TITLE, CommonConstants.ZIXUN_TAB_INDEX, $r('app.media.ic_tram_selected'), $r('app.media.ic_tram_normal')))
 
       TabContent() {
-        MinePage()
+        if (this.currentIndex === CommonConstants.MINE_TAB_INDEX)
+          MinePage()
       }
       .tabBar(this.TabBuilder(CommonConstants.MINE_TITLE, CommonConstants.MINE_TAB_INDEX, $r('app.media.ic_mine_selected'), $r('app.media.ic_mine_normal')))
 
