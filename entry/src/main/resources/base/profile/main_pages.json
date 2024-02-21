@@ -10,6 +10,7 @@
     "pages/Wallpaper/WallpaperDetailPage",
     "pages/Mine/settingPage",
     "pages/Notice/NoticePage",
-    "pages/ActivePage"
+    "pages/ActivePage",
+    "pages/SensorPage"
   ]
 }
