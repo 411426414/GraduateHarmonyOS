@@ -6,7 +6,7 @@ import promptAction from '@ohos.promptAction';
 // axios.defaults.headers.post['Token'] = AppStorage.Get('token')
 axios.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   // 对请求数据做点什么 
-  config.headers.Token = '77d08536-9e68-4ce2-b8dc-c798bb6fde38' || AppStorage.Get('token')
+  config.headers.Token = AppStorage.Get('token')
   return config;
 }, (error: AxiosError) => {
   // 对请求错误做些什么
