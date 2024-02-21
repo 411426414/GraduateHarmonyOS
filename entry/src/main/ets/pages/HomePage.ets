@@ -3,26 +3,31 @@ import axios from '@ohos/axios';
 import { BannerList, ClassInfoList, NoticeList } from '../Api/homePage';
 import router from '@ohos.router';
 
-const flagTag = 'HomePage'
+const flagTag: string = '首页'
 
 @Entry
 @Component
 export default struct HomePage {
-  @State swiperList: Array<Banner> = [{ "coverimage": "/uploads/20230318/5060835d87b8a2383f1eb7e1ec8b2743.png", }]
-  @State noticeList: Array<Notice> = [{ "title": "标题11111111111111", }]
+  @State swiperList: Array<Banner> = [
+  //   { "coverimage": "/uploads/20230318/5060835d87b8a2383f1eb7e1ec8b2743.png", }
+  ]
+  @State noticeList: Array<Notice> = [
+  //   { "title": "公告标题", }
+  ]
   @State classInfoList: Array<ClassInfo> = []
   @State isLoading: boolean = false
 
   aboutToAppear() {
+    console.log(`${flagTag} aboutToAppear`)
     this.getBannerList()
     this.getNoticeList()
     this.getClassInfoList()
   }
 
   onPageShow() {
+    console.log(`${flagTag} onPageShow`)
     this.isLoading = true
   }
-
   getBannerList() {
     BannerList()
       .then(res => {
@@ -73,8 +78,10 @@ export default struct HomePage {
       }
       Scroll() {
         Flex({ direction: FlexDirection.Column }) {
-          BannerBox({ swiperList: $swiperList })
-          NoticeBox({ noticeList: $noticeList })
+          if (this.swiperList.length > 0)
+            BannerBox({ swiperList: $swiperList })
+          if (this.noticeList.length > 0)
+            NoticeBox({ noticeList: $noticeList })
           ClassInfoBox({ classInfoList: $classInfoList })
         }
       }
