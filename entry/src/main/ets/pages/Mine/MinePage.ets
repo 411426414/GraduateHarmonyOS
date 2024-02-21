@@ -9,6 +9,10 @@ const flagTag: string = '我的'
 export default struct MinePage {
   @State UserInfo: UserInfoModel = {}
 
+  aboutToAppear() {
+    console.log(`${flagTag} aboutToAppear`)
+  }
+
   onPageShow() {
     this.getUserInfo()
   }
@@ -66,6 +70,7 @@ export default struct MinePage {
       this.menuItem('我的下载', $r('app.media.left_arrow'), 'pages/Wallpaper/WallpaperPage')
       this.menuItem('我的订单', $r('app.media.left_arrow'), 'pages/Tram/TramPage')
       this.menuItem('列表页面', $r('app.media.left_arrow'), 'pages/ActivePage')
+      this.menuItem('传感器页面', $r('app.media.left_arrow'), 'pages/SensorPage')
     }
     .width('95%')
     .backgroundColor('#FFF')
