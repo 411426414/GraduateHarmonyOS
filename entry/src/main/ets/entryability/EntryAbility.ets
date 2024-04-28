@@ -1,9 +1,14 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
+import bundleManager from '@ohos.bundle.bundleManager';
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want, launchParam) {
+  async onCreate(want, launchParam) {
+    let flag = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+    let bundleInfo = await bundleManager.getBundleInfoForSelf(flag)
+    let appId = bundleInfo.signatureInfo.appId;
+    console.log("222222222222222222222appId: " + appId);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
   }
 
