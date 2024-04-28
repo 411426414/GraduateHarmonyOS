@@ -1,4 +1,4 @@
-import router from '@ohos.router'
+import router from '@ohos.router';
 import { userIndex } from '../../Api/user';
 import { UserInfoModel } from '../../viewmodel/UserModel';
 
@@ -28,7 +28,8 @@ export default struct MinePage {
     }.width('100%').height('100%').backgroundColor('#f1f1f1')
   }
 
-  @Builder userBaseInfoBox(UserInfo: UserInfoModel) {
+  @Builder
+  userBaseInfoBox(UserInfo: UserInfoModel) {
     Row() {
       Row() {
         Image($r('app.media.img')).width(75).height(75).objectFit(ImageFit.Contain).borderRadius(50)
@@ -63,14 +64,15 @@ export default struct MinePage {
     })
   }
 
-  @Builder menuListBox() {
+  @Builder
+  menuListBox() {
     Column() {
       this.menuItem('设置', $r('app.media.left_arrow'), 'pages/Mine/settingPage')
       this.menuItem('我的收藏', $r('app.media.left_arrow'), 'pages/Wallpaper/WallpaperPage')
       this.menuItem('我的下载', $r('app.media.left_arrow'), 'pages/Wallpaper/WallpaperPage')
       this.menuItem('我的订单', $r('app.media.left_arrow'), 'pages/Tram/TramPage')
       this.menuItem('列表页面', $r('app.media.left_arrow'), 'pages/ActivePage')
-      this.menuItem('传感器页面', $r('app.media.left_arrow'), 'pages/SensorPage')
+      this.menuItem('传感器页面', $r('app.media.left_arrow'), 'pages/Sensor/SensorListPage')
     }
     .width('95%')
     .backgroundColor('#FFF')
@@ -80,7 +82,8 @@ export default struct MinePage {
     .borderRadius(15)
   }
 
-  @Builder menuItem(title: string, icon: Resource, url?: string) {
+  @Builder
+  menuItem(title: string, icon: Resource, url?: string) {
     Row() {
       Row() {
         Image($r('app.media.ic_privacy')).width(20)
