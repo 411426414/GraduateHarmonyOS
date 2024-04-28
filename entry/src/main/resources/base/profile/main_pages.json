@@ -11,6 +11,9 @@
     "pages/Mine/settingPage",
     "pages/Notice/NoticePage",
     "pages/ActivePage",
-    "pages/SensorPage"
+    "pages/SelectPhotoPage",
+    "pages/Sensor/SensorPage",
+    "pages/Sensor/SensorListPage",
+    "pages/Sensor/GravitySensorPage"
   ]
 }

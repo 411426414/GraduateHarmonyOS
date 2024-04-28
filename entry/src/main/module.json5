@@ -16,10 +16,11 @@
       {"name": "ohos.permission.ACCELEROMETER"},
       {"name": "ohos.permission.ACTIVITY_MOTION"},
       //API9及之后需要增加申请的权限,API9后两个权限同时申请才可以获取米级定位，只下边一个权限只能精准到5公里
-      {"name": "ohos.permission.APPROXIMATELY_LOCATION", "usedScene": {"abilities": ["EntryAbility"], "when": "inuse"}},
+      {"name": "ohos.permission.APPROXIMATELY_LOCATION", "usedScene": {"abilities": ["EntryAbility"], "when": "always"}},
       // API9之前申请的权限,API9之前只申请这个就可以米级定位
-      {"name": "ohos.permission.LOCATION", "usedScene": {"abilities": ["EntryAbility"], "when": "inuse"}},
-      {"name": "ohos.permission.LOCATION_IN_BACKGROUND", "usedScene": {"abilities": ["EntryAbility"], "when": "inuse"}}
+      {"name": "ohos.permission.LOCATION", "usedScene": {"abilities": ["EntryAbility"], "when": "always"}},
+      {"name": "ohos.permission.LOCATION_IN_BACKGROUND", "usedScene": {"abilities": ["EntryAbility"], "when": "always"}},
+      {"name": "ohos.permission.KEEP_BACKGROUND_RUNNING", "usedScene": {"abilities": ["EntryAbility"], "when": "always"}}
     ],
     "abilities": [
       {

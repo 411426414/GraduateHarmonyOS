@@ -5,13 +5,13 @@
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "certpath": "C:\\Users\\郑杰\\.ohos\\config\\auto_debug_GraduateHarmonyOS_com.zhengjie.appfirst_300086000021346761.cer",
-          "storePassword": "0000001A5D0ED3676D1951F41FCC58CFC3E09F57F767C09525D0AA2B2753A8BC7BF9773FFC6EA9FCC15A",
+          "certpath": "C:\\Users\\411426414\\.ohos\\config\\auto_debug_GraduateHarmonyOS_com.zhengjie.appfirst_300086000021346761.cer",
+          "storePassword": "0000001B404DE9FD3068909A22D9CF9557D2D6598ACAF0F6215150707BC3A6472387648B091DE98972BD13",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001A9272606C4D7A5A7DDC9573A61A729EC8ABFC47BB5A27F5F0DBF5043780AD289881F062A4A6F5",
-          "profile": "C:\\Users\\郑杰\\.ohos\\config\\auto_debug_GraduateHarmonyOS_com.zhengjie.appfirst_300086000021346761.p7b",
+          "keyPassword": "0000001B5AEDB33439540039F06094543D43B367B4A43D4D9234AA37EBFD682D24945D6D8087D7E72F7698",
+          "profile": "C:\\Users\\411426414\\.ohos\\config\\auto_debug_GraduateHarmonyOS_com.zhengjie.appfirst_300086000021346761.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "C:\\Users\\郑杰\\.ohos\\config\\auto_debug_GraduateHarmonyOS_com.zhengjie.appfirst_300086000021346761.p12"
+          "storeFile": "C:\\Users\\411426414\\.ohos\\config\\auto_debug_GraduateHarmonyOS_com.zhengjie.appfirst_300086000021346761.p12"
         }
       }
     ],
