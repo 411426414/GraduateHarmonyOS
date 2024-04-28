@@ -1,5 +1,4 @@
-import { Banner, ClassInfo, Notice } from '../viewmodel/BannerModel'
-import axios from '@ohos/axios';
+import { Banner, ClassInfo, Notice } from '../viewmodel/BannerModel';
 import { BannerList, ClassInfoList, NoticeList } from '../Api/homePage';
 import router from '@ohos.router';
 
@@ -28,6 +27,7 @@ export default struct HomePage {
     console.log(`${flagTag} onPageShow`)
     this.isLoading = true
   }
+
   getBannerList() {
     BannerList()
       .then(res => {
@@ -77,12 +77,22 @@ export default struct HomePage {
           .width(50)
       }
       Scroll() {
-        Flex({ direction: FlexDirection.Column }) {
+        Flex({
+          direction: FlexDirection.Column,
+          justifyContent: FlexAlign.Center,
+          alignItems: ItemAlign.Center
+        }) {
           if (this.swiperList.length > 0)
             BannerBox({ swiperList: $swiperList })
           if (this.noticeList.length > 0)
             NoticeBox({ noticeList: $noticeList })
           ClassInfoBox({ classInfoList: $classInfoList })
+          Button('传感器页面')
+            .width('50%')
+            .margin({ top: 50 })
+            .onClick(() => {
+              router.pushUrl({ url: 'pages/Sensor/SensorListPage' })
+            })
         }
       }
       .margin('12vp')
@@ -110,8 +120,7 @@ struct BannerBox {
               .textStyle(12, 400)
               .opacity(0.9)
               .margin({ bottom: 4 })
-            Text(item.title)
-              .textStyle(20, 700)
+            Text(item.title).textStyle(20, 700)
           }
           .alignItems(HorizontalAlign.Start)
           .height(90)
@@ -194,11 +203,13 @@ struct ClassInfoBox {
     })
   }
 }
+
 /**
  * @param fontSize 字体大小
  * @param fontWeight 字体粗细
  */
-@Extend(Text) function textStyle(fontSize: number, fontWeight: number) {
+@Extend(Text)
+function textStyle(fontSize: number, fontWeight: number) {
   .fontSize(fontSize)
   .fontColor($r('app.color.start_window_background'))
   .fontWeight(fontWeight)
