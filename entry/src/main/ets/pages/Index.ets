@@ -22,7 +22,7 @@ struct Index {
     }) {
       TabContent() {
         if (this.currentIndex === CommonConstants.HOME_TAB_INDEX)
-        HomePage()
+          HomePage()
       }
       .tabBar(this.TabBuilder(CommonConstants.HOME_TITLE, CommonConstants.HOME_TAB_INDEX, $r('app.media.ic_home_selected'), $r('app.media.ic_home_normal')))
 
@@ -57,7 +57,8 @@ struct Index {
     })
   }
 
-  @Builder TabBuilder(title: string, index: number, selectedImg: Resource, normalImg: Resource) {
+  @Builder
+  TabBuilder(title: string, index: number, selectedImg: Resource, normalImg: Resource) {
     Column() {
       Image(this.currentIndex === index ? selectedImg : normalImg)
         .width('25vp')

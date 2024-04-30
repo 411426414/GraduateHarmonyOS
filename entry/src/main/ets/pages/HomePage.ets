@@ -87,11 +87,17 @@ export default struct HomePage {
           if (this.noticeList.length > 0)
             NoticeBox({ noticeList: $noticeList })
           ClassInfoBox({ classInfoList: $classInfoList })
-          Button('传感器页面')
+          Button('传感器列表页面')
             .width('50%')
             .margin({ top: 50 })
             .onClick(() => {
               router.pushUrl({ url: 'pages/Sensor/SensorListPage' })
+            })
+          Button('消息通知')
+            .width('50%')
+            .margin({ top: 50 })
+            .onClick(() => {
+              router.pushUrl({ url: 'pages/NotificationPage' })
             })
         }
       }
