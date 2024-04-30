@@ -138,6 +138,7 @@ export default struct NotificationPage {
       Column() {
         Button('发布提醒')
           .width('50%')
+          .margin({ bottom: 10 })
           .onClick(() => {
             this.myReminderAgent()
           })

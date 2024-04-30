@@ -20,6 +20,7 @@ struct LoginPage {
   @State isDisable: boolean = false
   chang = (val: string) => {
   }
+
   // 发送验证码
   sendCode() {
     this.startSendCode()
@@ -39,7 +40,7 @@ struct LoginPage {
         this.userinfo = res.data.userinfo
         let token = this.userinfo.token
         AppStorage.SetOrCreate('token', token)
-        setTimeout(() => router.pushUrl({ url: 'pages/Mine/MinePage' }), 2000)
+        setTimeout(() => router.replaceUrl({ url: 'pages/Mine/MinePage' }), 2000)
       })
       .catch(err => {
         console.log('err: ', JSON.stringify(err))
@@ -52,7 +53,6 @@ struct LoginPage {
         this.isDisable = false
       })
   }
-
 
   // 开始倒计时
   startSendCode() {
@@ -120,8 +120,7 @@ struct LoginPage {
             }) {
               TextInput()
                 .height(50)
-                .margin({ right: 10 })
-                  // .backgroundColor('#FBFBFD')
+                .margin({ right: 10 })// .backgroundColor('#FBFBFD')
                 .backgroundColor('#EEE')
                 .onChange((val: string) => {
                   this.verifyCode = val

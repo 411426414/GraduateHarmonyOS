@@ -1,6 +1,7 @@
 import { LocateUtils } from '../../utils/LocateUtils';
 import geoLocationManager from '@ohos.geoLocationManager';
 
+@Entry
 @Component
 export default struct ZixunPage {
   locateUtils = new LocateUtils()
