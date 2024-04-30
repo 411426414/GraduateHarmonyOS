@@ -3,11 +3,6 @@ import bundleManager from '@ohos.bundle.bundleManager'
 import common from '@ohos.app.ability.common'
 
 class LocateUtils {
-  public static getLocation(callback: (location: any) => void) {
-    // 调用系统定位服务获取位置信息
-    // 实现定位逻辑，调用callback函数返回位置信息
-  }
-
   // 检测用户权限需要先获取Token，token是异步回调的
   async accessToken(permission: Permissions): Promise<abilityAccessCtrl.GrantStatus> {
     let atManager = abilityAccessCtrl.createAtManager()

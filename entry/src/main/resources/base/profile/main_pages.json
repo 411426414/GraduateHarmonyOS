@@ -7,12 +7,14 @@
     "pages/Tram/TramPage",
     "pages/Zixun/ZixunPage",
     "pages/Wallpaper/WallpaperPage",
+    "pages/Wallpaper/WallpaperPage1",
     "pages/Wallpaper/WallpaperDetailPage",
     "pages/Mine/settingPage",
     "pages/Notice/NoticePage",
     "pages/ActivePage",
     "pages/SelectPhotoPage",
     "pages/Sensor/SensorListPage",
-    "pages/Sensor/GravitySensorPage"
+    "pages/Sensor/GravitySensorPage",
+    "pages/NotificationPage"
   ]
 }
