@@ -1,7 +1,6 @@
 import { LocateUtils } from '../../utils/LocateUtils';
 import geoLocationManager from '@ohos.geoLocationManager';
 
-@Entry
 @Component
 export default struct ZixunPage {
   locateUtils = new LocateUtils()
@@ -34,38 +33,36 @@ export default struct ZixunPage {
 
   // 权限完成后，开启定位
   startLocate() {
+    console.log('OfficialLocationPageLocation onPageShow')
     this.locateUtils.checkPermission()
       .then(() => {
-        try {
-          //获取当前的地理位置
-          geoLocationManager.getCurrentLocation((err, location) => {
-            if (err) {
-              console.log('OfficialLocationPageLocation getCurrentLocation err = ' + JSON.stringify(err))
-            }
-            if (location) {
-              console.log('OfficialLocationPageLocation getCurrentLocation = ' + JSON.stringify(location))
-              this.getCurrentLocation = JSON.stringify(location)
-              let latitude = location.latitude
-              let longitude = location.longitude
-              let reverseGeocodeReq = { 'latitude': latitude, 'longitude': longitude }
-              // 根据坐标转化为地理描述
-              geoLocationManager.getAddressesFromLocation(reverseGeocodeReq, (err, val) => {
-                if (err) {
-                  console.log('OfficialLocationPageLocation getAddressesFromLocation err = ' + JSON.stringify(err))
-                  //{"code":3301300,"message":"BussinessError 3301300: Reverse geocoding query failed."}
-                }
-                if (val) {
-                  console.log('OfficialLocationPageLocation getAddressesFromLocation = ' + JSON.stringify(val))
-                  this.getAddressesFromLocation = JSON.stringify(val)
-                }
-              })
-            }
-          })
-        } catch (err) {
-          console.log('OfficialLocationPageLocation getCurrentLocation catch err = ' + JSON.stringify(err))
-        }
-      }).catch(err => {
-      console.error("OfficialLocationPageLocation permission errCode:" + err.code + ",errMessage:" + err.message)
-    })
+        //获取当前的地理位置
+        geoLocationManager.getCurrentLocation((err, location) => {
+          if (err) {
+            console.log('OfficialLocationPageLocation getCurrentLocation err = ' + JSON.stringify(err))
+          }
+          if (location) {
+            console.log('OfficialLocationPageLocation getCurrentLocation = ' + JSON.stringify(location))
+            this.getCurrentLocation = JSON.stringify(location)
+            let latitude = location.latitude
+            let longitude = location.longitude
+            let reverseGeocodeReq = { 'latitude': latitude, 'longitude': longitude }
+            // 根据坐标转化为地理描述
+            geoLocationManager.getAddressesFromLocation(reverseGeocodeReq, (err, val) => {
+              if (err) {
+                console.log('OfficialLocationPageLocation getAddressesFromLocation err = ' + JSON.stringify(err))
+                //{"code":3301300,"message":"BussinessError 3301300: Reverse geocoding query failed."}
+              }
+              if (val) {
+                console.log('OfficialLocationPageLocation getAddressesFromLocation = ' + JSON.stringify(val))
+                this.getAddressesFromLocation = JSON.stringify(val)
+              }
+            })
+          }
+        })
+      })
+      .catch(err => {
+        console.error("OfficialLocationPageLocation permission errCode:" + err.code + ",errMessage:" + err.message)
+      })
   }
 }
