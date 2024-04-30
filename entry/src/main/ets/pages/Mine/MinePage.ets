@@ -69,7 +69,7 @@ export default struct MinePage {
     Column() {
       this.menuItem('设置', $r('app.media.left_arrow'), 'pages/Mine/settingPage')
       this.menuItem('我的收藏', $r('app.media.left_arrow'), 'pages/Wallpaper/WallpaperPage')
-      this.menuItem('我的下载', $r('app.media.left_arrow'), 'pages/Wallpaper/WallpaperPage')
+      this.menuItem('我的下载', $r('app.media.left_arrow'), 'pages/Wallpaper/WallpaperPage1')
       this.menuItem('我的订单', $r('app.media.left_arrow'), 'pages/Tram/TramPage')
       this.menuItem('列表页面', $r('app.media.left_arrow'), 'pages/ActivePage')
       this.menuItem('传感器页面', $r('app.media.left_arrow'), 'pages/Sensor/SensorListPage')

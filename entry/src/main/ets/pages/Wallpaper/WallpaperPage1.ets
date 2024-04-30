@@ -1,13 +1,13 @@
 import router from '@ohos.router'
 import { WaterFlowDataSource } from '../../utils/WaterFlowDataSource'
-import { PyImg, PyImgData } from '../../viewmodel/PyImg'
+import { PyImg1, PyImgData1 } from '../../viewmodel/PyImg'
 
 const flagTag: string = '壁纸'
 
 @Entry
 @Component
 struct WallpaperPage {
-  @State PyImg: PyImg[] = []
+  @State PyImg: PyImg1[] = []
   @State minSize: number = 50
   @State maxSize: number = 100
   @State fontSize: number = 24
@@ -20,11 +20,11 @@ struct WallpaperPage {
     // getPyImg().then(res => {
     //   this.PyImg = res.data
     // })
-    PyImgData.map((item: PyImg) => {
+    PyImgData1.map((item: PyImg1) => {
       item.height = item.height ?? 0
       item.width = item.width ?? 0
     })
-    this.PyImg = PyImgData
+    this.PyImg = PyImgData1
 
     this.getItemSizeArray(this.PyImg)
   }
@@ -32,7 +32,7 @@ struct WallpaperPage {
   // 保存flow item宽/高
   getItemSizeArray(data) {
     let _this = this
-    data.forEach((item: PyImg) => {
+    data.forEach((item: PyImg1) => {
       if (item.width && item.height) {
         _this.itemHeightArray.push(Number(item.height) / (Number(item.width) / 169))
       }
@@ -44,16 +44,16 @@ struct WallpaperPage {
     Column({ space: 6 }) {
       // footer: this.itemFoot.bind(this),
       WaterFlow({ scroller: this.scroller }) {
-        LazyForEach(this.datasource, (item: PyImg, index: number) => {
+        LazyForEach(this.datasource, (item: PyImg1, index: number) => {
           FlowItem() {
             Column() {
-              Image((item.image.indexOf('https') != -1 || item.image.indexOf('http') != -1) ? item.image : 'https://gzh.411426414.top' + item.image)
+              Image(item.url)
                 .width('100%')
                 .height(this.itemHeightArray[index])
                 .objectFit(ImageFit.Contain)
                 .borderRadius({ topLeft: 15, topRight: 15 })
               Column() {
-                Text(item.publishtime_text)
+                Text(item.pic_alt)
                   .fontSize(14)
                   .fontWeight(FontWeight.Bold)
                 Text(`创建时间：${item.createtime}`)
