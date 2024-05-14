@@ -23,17 +23,6 @@ export function NoticeById() {
 export function ClassInfoList() {
   return Axios.get(baseUrl + `/api/zixun/classification`)
 }
-/**
- *  获取信息列表
- */
-export function ZixunInfoList(data?: {
-  search: string
-  type: number
-  page: number
-  pagesize: number
-}) {
-  return Axios.get(baseUrl + `/api/zixun/infolist`, { params: data })
-}
 
 export function getPyImg(data?) {
   return Axios.get(`https://shopro.411426414.top/api/py/getPyImg`, { params: data })

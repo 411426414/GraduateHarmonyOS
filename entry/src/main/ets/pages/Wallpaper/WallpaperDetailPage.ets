@@ -1,4 +1,3 @@
-import display from '@ohos.display'
 import router from '@ohos.router'
 import { WallpaperDetail } from '../../Api/wallpaper'
 import { PyImg } from '../../viewmodel/PyImg'
@@ -12,7 +11,7 @@ struct WallpaperDetailPage {
   @State highs: number = 0
   @State wallpaper_id: number = 15 || router.getParams()["wallpaper_id"]
 
-  aboutToAppear() {
+  onPageShow() {
     this.getWallpaperDetail()
   }
 
