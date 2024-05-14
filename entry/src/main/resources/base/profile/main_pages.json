@@ -15,6 +15,9 @@
     "pages/SelectPhotoPage",
     "pages/Sensor/SensorListPage",
     "pages/Sensor/GravitySensorPage",
-    "pages/NotificationPage"
+    "pages/NotificationPage",
+    "pages/Demo/RelativeContainerPage",
+    "pages/Demo/LocationPage",
+    "pages/Zixun/ZixunDetailPage"
   ]
 }
