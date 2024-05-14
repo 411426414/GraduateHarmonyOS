@@ -33,3 +33,29 @@ export class ClassInfo {
   updatetime?: number
   status_text?: string
 }
+
+export class ZixunInfo {
+  id?: number
+  createtime?: number
+  updatetime?: number
+  title?: string
+  shortdesc?: string
+  publishtime?: string
+  coverimage?: string
+  audiofile?: string
+  videofile?: string
+  briefcontent?: string
+  price?: string
+  canpointdata?: string
+  status?: string
+  zxviplevel_ids?: string
+  zxviplevelname?: string
+  viewcount?: number
+  sharecount?: number
+  recommend?: string
+  hot?: string
+  canpointdata_text?: string
+  status_text?: string
+  recommend_text?: string
+  hot_text?: string
+}

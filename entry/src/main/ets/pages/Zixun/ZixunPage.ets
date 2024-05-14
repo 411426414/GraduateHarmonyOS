@@ -1,69 +1,131 @@
-import { LocateUtils } from '../../utils/LocateUtils';
-import geoLocationManager from '@ohos.geoLocationManager';
+import { ClassInfoList } from '../../Api/homePage'
+import { ZixunInfoList } from '../../Api/zixun'
+import { ClassInfo, ZixunInfo } from '../../viewmodel/BannerModel'
+import { baseUrl } from '../../common/config'
+import router from '@ohos.router'
+
+const flagTag: string = '咨询页'
 
 @Entry
 @Component
 export default struct ZixunPage {
-  locateUtils = new LocateUtils()
-  @State message: string = '开始定位'
-  @State getCurrentLocation: string = '1'
-  @State getAddressesFromLocation: string = '2'
+  @State classInfoList: Array<ClassInfo> = []
+  @State isLoading: boolean = false
+  @State currentIndex: number = 0
+  @State ZixunInfoList: Array<ZixunInfo> = []
 
   aboutToAppear() {
-    this.startLocate()
+    this.getClassInfoList()
+    this.getZixunInfoList()
+  }
+
+  onPageShow() {
+    this.isLoading = true
+    this.getClassInfoList()
+    this.getZixunInfoList()
   }
 
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            this.startLocate()
-          })
-        Text("----- getCurrentLocation -----")
-        Text(this.getCurrentLocation)
-        Text('----- getAddressesFromLocation -----')
-        Text(this.getAddressesFromLocation)
+    Column({ space: 8 }) {
+      if (this.isLoading) {
+        LoadingProgress().color('#0091ff').width(50)
       }
-      .width('100%')
+      Stack() {
+        Column() {
+          // Tabs组件
+          Tabs({ barPosition: BarPosition.Start, index: this.currentIndex }) {
+            ForEach(this.classInfoList, (item: ClassInfo) => {
+              TabContent() {
+                if (this.isLoading) {
+                  LoadingProgress().color('#0091ff').width(50)
+                } else {
+                  this.buildClassInfoList()
+                }
+              }.tabBar(item.name)
+            }, (item) => item.id)
+          }
+          .barWidth('95%')
+          .barHeight('7.2%')
+          .barMode(BarMode.Fixed)
+          .scrollable(true)
+          .barMode(BarMode.Scrollable)
+          .onChange((index: number) => this.currentIndex = index)
+        }.justifyContent(FlexAlign.Start).alignItems(HorizontalAlign.Start)
+      }.height('100%')
     }
     .height('100%')
+    .width('100%')
+    .backgroundColor('#F2F3F5')
   }
 
-  // 权限完成后，开启定位
-  startLocate() {
-    console.log('OfficialLocationPageLocation onPageShow')
-    this.locateUtils.checkPermission()
-      .then(() => {
-        //获取当前的地理位置
-        geoLocationManager.getCurrentLocation((err, location) => {
-          if (err) {
-            console.log('OfficialLocationPageLocation getCurrentLocation err = ' + JSON.stringify(err))
-          }
-          if (location) {
-            console.log('OfficialLocationPageLocation getCurrentLocation = ' + JSON.stringify(location))
-            this.getCurrentLocation = JSON.stringify(location)
-            let latitude = location.latitude
-            let longitude = location.longitude
-            let reverseGeocodeReq = { 'latitude': latitude, 'longitude': longitude }
-            // 根据坐标转化为地理描述
-            geoLocationManager.getAddressesFromLocation(reverseGeocodeReq, (err, val) => {
-              if (err) {
-                console.log('OfficialLocationPageLocation getAddressesFromLocation err = ' + JSON.stringify(err))
-                //{"code":3301300,"message":"BussinessError 3301300: Reverse geocoding query failed."}
+  @Builder
+  buildClassInfoList() {
+    Column() {
+      List({ space: 8 }) {
+        ForEach(this.ZixunInfoList, (item: ZixunInfo, index: number) => {
+          ListItem() {
+            Column() {
+              Text(item.title).fontSize(16).maxLines(2).textOverflow({ overflow: TextOverflow.Ellipsis })
+
+              if (item.videofile != '') {
+                Video({
+                  src: baseUrl + item.videofile,
+                  previewUri: baseUrl + item.coverimage
+                })
+                  .width('100%')
+                  .height(200)
               }
-              if (val) {
-                console.log('OfficialLocationPageLocation getAddressesFromLocation = ' + JSON.stringify(val))
-                this.getAddressesFromLocation = JSON.stringify(val)
+              if (item.audiofile != '') {
+                Text(baseUrl + item.audiofile)
               }
+              if (item.coverimage != '' && item.videofile == '') {
+                Image(baseUrl + item.coverimage).width('100%').borderRadius(7).padding({ top: 10 })
+              }
+              if (Number(item.price) > 0) {
+                Text('￥' + item.price + '元').fontSize(16).fontColor('#F00').padding({ top: 10 })
+              }
+              Row() {
+                // Image()
+                Text('浏览量:' + item.viewcount + '次').fontSize(14).fontColor('#999999')
+                Column() {
+                }.width(1).height(16).backgroundColor('#999999').margin({ left: 5, right: 5 })
+
+                Text(item.publishtime).fontSize(14).fontColor('#999999')
+              }.padding({ top: 10 })
+            }
+            .width('100%')
+            .borderRadius(10)
+            .backgroundColor('#FFFFFF')
+            .alignItems(HorizontalAlign.Start)
+            .padding({ left: 10, right: 10, top: 10, bottom: 10 })
+            .onClick(() => {
+              router.pushUrl({
+                url: 'pages/Zixun/ZixunDetailPage',
+                params: {
+                  zixunId: item.id
+                }
+              })
             })
           }
         })
-      })
-      .catch(err => {
-        console.error("OfficialLocationPageLocation permission errCode:" + err.code + ",errMessage:" + err.message)
-      })
+      }
+    }
+    .backgroundColor('#F2F2F2')
+    .width('100%')
+    .height('100%')
+    .padding({ left: 10, right: 10, bottom: 10 })
+  }
+
+  getClassInfoList() {
+    ClassInfoList().then(res => {
+      this.classInfoList = res.data
+    }).finally(() => this.isLoading = false)
+  }
+
+  getZixunInfoList() {
+    ZixunInfoList().then(res => {
+      this.ZixunInfoList = res.data
+      console.log("res:", JSON.stringify(res))
+    }).finally(() => this.isLoading = false)
   }
 }
